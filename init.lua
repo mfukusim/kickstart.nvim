@@ -661,13 +661,18 @@ require('lazy').setup({
         javascript = { { 'prettierd', 'prettier' } },
         typescript = { { 'prettierd', 'prettier' } },
         json = { { 'prettierd', 'prettier' } },
-        -- python = { 'ruff_fix', 'ruff_format' },
-        python = { 'black' },
+        css = { { 'prettierd', 'prettier' } },
+        html = { { 'prettierd', 'prettier' } },
+        json = { { 'prettierd', 'prettier' } },
+        html = { { 'prettierd', 'prettier' } },
+        yaml = { { 'prettierd', 'prettier' } },
+        markdown = { { 'prettierd', 'prettier' } },
+        python = { 'ruff_fix', 'ruff_format' },
         go = { 'goimports', 'gofmt' },
         php = { 'php-cs-fixer' },
         rust = { 'rustfmt' },
         sql = { 'sqlfluff' },
-        --sh = { "shellharden" },
+        sh = { "shfmt" },
       },
       formatters = {
         ['php-cs-fixer'] = {
@@ -727,7 +732,8 @@ require('lazy').setup({
             luasnip.lsp_expand(args.body)
           end,
         },
-        completion = { completeopt = 'menu,menuone,noinsert' },
+        preselect = cmp.PreselectMode.None,
+        completion = { completeopt = 'menu,menuone,noselect,noinsert' },
 
         -- For an understanding of why these mappings were
         -- chosen, you will need to read `:help ins-completion`
@@ -855,33 +861,7 @@ require('lazy').setup({
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
     opts = {
-      ensure_installed = {
-        'bash',
-        'c',
-        'c_sharp',
-        'cpp',
-        'css',
-        'diff',
-        'go',
-        'html',
-        'java',
-        'javascript',
-        'json',
-        'lua',
-        'luadoc',
-        'markdown',
-        'php',
-        'python',
-        'rust',
-        'sql',
-        'svelte',
-        'toml',
-        'typescript',
-        'vim',
-        'vimdoc',
-        'xml',
-        'yaml',
-      },
+      ensure_installed = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'vim', 'vimdoc' },
       -- Autoinstall languages that are not installed
       auto_install = true,
       highlight = {
@@ -959,6 +939,10 @@ if vim.g.vscode then
   vim.keymap.set({ 'n', 'v', 'o' }, 'gc', '<Plug>VSCodeCommentary')
   vim.keymap.set('n', 'gcc', '<Plug>VSCodeCommentaryLine')
 end
+
+-- bufferline用
+vim.keymap.set('n', '<C-Right>', '<CMD>BufferLineCycleNext<CR>')
+vim.keymap.set('n', '<C-Left>', '<CMD>BufferLineCyclePrev<CR>')
 
 -- vim/nvim 共通
 vim.cmd 'source ~/.vimrc'
