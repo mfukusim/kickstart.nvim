@@ -663,8 +663,6 @@ require('lazy').setup({
         json = { { 'prettierd', 'prettier' } },
         css = { { 'prettierd', 'prettier' } },
         html = { { 'prettierd', 'prettier' } },
-        json = { { 'prettierd', 'prettier' } },
-        html = { { 'prettierd', 'prettier' } },
         yaml = { { 'prettierd', 'prettier' } },
         markdown = { { 'prettierd', 'prettier' } },
         python = { 'ruff_fix', 'ruff_format' },
@@ -672,7 +670,7 @@ require('lazy').setup({
         php = { 'php-cs-fixer' },
         rust = { 'rustfmt' },
         sql = { 'sqlfluff' },
-        sh = { "shfmt" },
+        sh = { 'shfmt' },
       },
       formatters = {
         ['php-cs-fixer'] = {
