@@ -942,8 +942,5 @@ end
 vim.keymap.set('n', '<C-Right>', '<CMD>BufferLineCycleNext<CR>')
 vim.keymap.set('n', '<C-Left>', '<CMD>BufferLineCyclePrev<CR>')
 
--- vim/nvim 共通
-vim.cmd 'source ~/.vimrc'
-
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
