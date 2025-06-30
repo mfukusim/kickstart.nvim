@@ -1051,8 +1051,14 @@ end
 -- bufferline用
 vim.keymap.set('n', '<C-Right>', '<CMD>BufferLineCycleNext<CR>')
 vim.keymap.set('n', '<C-Left>', '<CMD>BufferLineCyclePrev<CR>')
+
 -- vimと共通の設定
--- vim.cmd 'source ~/.vimrc'
+vim.api.nvim_create_autocmd('VimEnter', {
+  group = vim.api.nvim_create_augroup('LoadVimConfig', { clear = true }),
+  callback = function()
+    vim.cmd 'source ~/.vimrc'
+  end,
+})
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
