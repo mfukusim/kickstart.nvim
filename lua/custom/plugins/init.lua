@@ -5,6 +5,7 @@
 return {
   'vim-jp/vimdoc-ja',
   'thinca/vim-zenspace',
+  'farmergreg/vim-lastplace',
   { 'delphinus/emcl.nvim', opts = {} },
   { 'windwp/nvim-ts-autotag', opts = {} },
   { 'akinsho/bufferline.nvim', version = '*', dependencies = 'nvim-tree/nvim-web-devicons', opts = {} },

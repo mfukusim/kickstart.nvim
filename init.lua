@@ -674,11 +674,20 @@ require('lazy').setup({
       --  - settings (table): Override the default settings passed when initializing the server.
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       local servers = {
+        vimls = {},
+        bashls = {},
+        cssls = {},
+        docker_compose_language_service = {},
+        dockerls = {},
+        html = {},
+        --java_language_server = {},
+        --csharp_ls = {},
         intelephense = {},
         clangd = {},
         gopls = {},
         pyright = {},
         rust_analyzer = {},
+
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
         --
         -- Some languages (like typescript) have entire language plugins that can be useful:
@@ -776,14 +785,14 @@ require('lazy').setup({
         --
         -- You can use 'stop_after_first' to run the first available formatter from the list
         javascript = { 'prettierd', 'prettier', stop_after_first = true },
-        typescript = { { 'prettierd', 'prettier' } },
-        json = { { 'prettierd', 'prettier' } },
-        css = { { 'prettierd', 'prettier' } },
-        html = { { 'prettierd', 'prettier' } },
-        yaml = { { 'prettierd', 'prettier' } },
-        markdown = { { 'prettierd', 'prettier' } },
-        python = { 'ruff_fix', 'ruff_format' },
-        go = { 'goimports', 'gofmt' },
+        typescript = { 'prettierd' },
+        json = { 'prettierd' },
+        css = { 'prettierd' },
+        html = { 'prettierd' },
+        yaml = { 'prettierd' },
+        markdown = { 'prettierd' },
+        python = { 'ruff_fix', 'ruff_format', stop_after_first = true },
+        go = { 'goimports', 'gofmt', stop_after_first = true },
         php = { 'php-cs-fixer' },
         rust = { 'rustfmt' },
         sql = { 'sqlfluff' },
@@ -878,6 +887,11 @@ require('lazy').setup({
         -- By default, you may press `<c-space>` to show the documentation.
         -- Optionally, set `auto_show = true` to show the documentation after a delay.
         documentation = { auto_show = false, auto_show_delay_ms = 500 },
+        list = {
+          selection = {
+            preselect = false,
+          },
+        },
       },
 
       sources = {
@@ -974,7 +988,33 @@ require('lazy').setup({
     main = 'nvim-treesitter.configs', -- Sets main module to use for opts
     -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
     opts = {
-      ensure_installed = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'vim', 'vimdoc' },
+      ensure_installed = {
+        'bash',
+        'c',
+        'c_sharp',
+        'cpp',
+        'css',
+        'diff',
+        'go',
+        'html',
+        'java',
+        'json',
+        'lua',
+        'luadoc',
+        'markdown',
+        'perl',
+        'php',
+        'python',
+        'ruby',
+        'rust',
+        'sql',
+        'toml',
+        'typescript',
+        'vim',
+        'vimdoc',
+        'xml',
+        'yaml',
+      },
       -- Autoinstall languages that are not installed
       auto_install = true,
       highlight = {
